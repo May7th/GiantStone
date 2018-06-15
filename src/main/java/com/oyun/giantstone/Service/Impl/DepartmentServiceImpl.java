@@ -1,5 +1,6 @@
 package com.oyun.giantstone.Service.Impl;
 
+import com.google.common.base.Preconditions;
 import com.oyun.giantstone.Service.DepartmentService;
 import com.oyun.giantstone.dao.DepartmentMapper;
 import com.oyun.giantstone.exception.PermissionException;
@@ -33,6 +34,18 @@ public class DepartmentServiceImpl implements DepartmentService {
         department.setOpeateIp("127.0.0.1");
         department.setOpeateTime(new Date());
         departmentMapper.insertSelective(department);
+
+    }
+
+    @Override
+    public void updata(Department department) {
+        if (checkExist(department.getParentId(),department.getName(),department.getId())){
+            throw new PermissionException("在同级下存在相同名称部门");
+        }
+        Department before = departmentMapper.selectByPrimaryKey(department.getId());
+
+        Preconditions.checkNotNull(before,"待更新的部门不存在");
+
 
     }
 

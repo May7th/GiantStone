@@ -1,5 +1,9 @@
 package com.oyun.giantstone.Service;
 
+import com.oyun.giantstone.dto.DeptLevelDto;
+
+import java.util.List;
+
 /**
  * @program: giantstone
  * @description:
@@ -8,4 +12,6 @@ package com.oyun.giantstone.Service;
  **/
 
 public interface TreeService {
+
+    List<DeptLevelDto> departmentTree();
 }

@@ -15,4 +15,6 @@ public interface DepartmentService {
      * @param department
      */
     void save(Department department);
+
+    void updata(Department department);
 }
